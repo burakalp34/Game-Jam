@@ -1,5 +1,11 @@
-[gd_scene format=3 uid="uid://dvprhe1k03m3u"]
+[gd_scene load_steps=2 format=3 uid="uid://dvprhe1k03m3u"]
+
+[ext_resource type="PackedScene" uid="uid://cb5domllwl33h" path="res://Scenes/spaceship.tscn" id="1_0ll74"]
 
 [node name="Space" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.65, 0.65)
+
+[node name="Spaceship" parent="." instance=ExtResource("1_0ll74")]
+position = Vector2(-16, -28)
