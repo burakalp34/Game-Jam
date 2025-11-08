@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://bwsay3cfnwobn"]
+[gd_scene load_steps=3 format=3 uid="uid://bwsay3cfnwobn"]
+
+[ext_resource type="Texture2D" uid="uid://ch66tl2ihpo4k" path="res://Sprites/simpleSpace_sheet@2.png" id="1_xjght"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xjght"]
+radius = 16.0
 
 [node name="Bullet" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xjght")
+region_enabled = true
+region_rect = Rect2(529, 481, 31, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_xjght")
