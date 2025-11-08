@@ -4,7 +4,7 @@ var thrustersFiring = false
 var turningRight = false
 var turningLeft = false
 
-var thrust = 5000 #in newtons
+var thrust = 3000 #in newtons
 var rcsThrust = 10000 #in newtons
 
 # Called when the node enters the scene tree for the first time.

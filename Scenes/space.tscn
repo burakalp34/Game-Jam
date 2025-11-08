@@ -5,7 +5,7 @@
 [node name="Space" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.65, 0.65)
+zoom = Vector2(0.2, 0.2)
 
 [node name="Spaceship" parent="." instance=ExtResource("1_0ll74")]
 position = Vector2(-16, -28)
