@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://wgarbbfex80m"
+path="res://.godot/imported/LLN First Draft.mp3-c6329bccb4d572227e5dc05381e6ea55.mp3str"
+
+[deps]
+
+source_file="res://Music and SFX/LLN First Draft.mp3"
+dest_files=["res://.godot/imported/LLN First Draft.mp3-c6329bccb4d572227e5dc05381e6ea55.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

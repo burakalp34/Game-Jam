@@ -8,7 +8,7 @@ var shooting = false
 var thrust = 3000 #in newtons
 var rcsThrust = 10000 #in newtons
 var littleBitOfFriction = 5 #in newtons for arcady gameplay
-var bulletForce = 1000
+var bulletForce = 3000
 
 var bullet = preload("res://Scenes/bullet.tscn")
 @onready var bulletPos = $"Bullet Launch Pos"
@@ -46,10 +46,10 @@ func _process(delta: float) -> void:
 		canShoot = false
 		
 		var go = bullet.instantiate()
-		go.global_position = bulletPos.global_position
+		go.position = bulletPos.position
 		go.apply_impulse(-transform.y * bulletForce)
 		add_child(go)
-		print("Shoot!")
+		#print("Shoot!")
 		
 		maxBurst -= 1
 	
