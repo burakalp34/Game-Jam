@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb5domllwl33h"]
+
+[ext_resource type="Texture2D" uid="uid://8xpjo5q8vmkt" path="res://Sprites/spaceShooter2_spritesheet_2X.png" id="1_5ajj3"]
+
+[node name="Spaceship" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5ajj3")
+region_enabled = true
+region_rect = Rect2(1148, 0, 235, 630)
