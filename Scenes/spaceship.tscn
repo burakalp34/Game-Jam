@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb5domllwl33h"]
+[gd_scene load_steps=3 format=3 uid="uid://cb5domllwl33h"]
 
 [ext_resource type="Texture2D" uid="uid://8xpjo5q8vmkt" path="res://Sprites/spaceShooter2_spritesheet_2X.png" id="1_5ajj3"]
+[ext_resource type="Script" uid="uid://18ocmwpcajul" path="res://Scenes/rigid_body_2d.gd" id="2_qkqkj"]
 
 [node name="Spaceship" type="Node2D"]
 
@@ -10,3 +11,4 @@ region_enabled = true
 region_rect = Rect2(1148, 0, 235, 630)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("2_qkqkj")
