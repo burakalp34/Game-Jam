@@ -8,3 +8,5 @@
 texture = ExtResource("1_5ajj3")
 region_enabled = true
 region_rect = Rect2(1148, 0, 235, 630)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
