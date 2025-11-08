@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo6l3g8yh1ns1"]
+
+[ext_resource type="Texture2D" uid="uid://bgcawu3asc02l" path="res://Sprites/explosions_transparent_clean.png" id="2_crgaq"]
+[ext_resource type="Script" uid="uid://dgl47g41t0bf6" path="res://Scenes/animated_sprite_2d.gd" id="2_e8jy1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udkmc"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(0, 0, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_588pw"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(107, 0, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xwr4"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(214, 0, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y48k2"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(321, 0, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8d6h"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(0, 120, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ospjg"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(107, 120, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yixra"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(214, 120, 107, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ldn3"]
+atlas = ExtResource("2_crgaq")
+region = Rect2(321, 120, 107, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xa5b4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udkmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_588pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xwr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y48k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8d6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ospjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yixra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ldn3")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 20.0
+}]
+
+[node name="explosiont" type="Node2D"]
+scale = Vector2(100, 100)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.001, 0.001)
+sprite_frames = SubResource("SpriteFrames_xa5b4")
+animation = &"explosion"
+frame_progress = 0.17499597
+script = ExtResource("2_e8jy1")
