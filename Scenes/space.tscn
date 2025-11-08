@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvprhe1k03m3u"]
+[gd_scene load_steps=3 format=3 uid="uid://dvprhe1k03m3u"]
 
 [ext_resource type="PackedScene" uid="uid://cb5domllwl33h" path="res://Scenes/spaceship.tscn" id="1_0ll74"]
+[ext_resource type="Script" uid="uid://buevb5jy4vdqe" path="res://Scripts/GameController.gd" id="1_p3ued"]
 
 [node name="Space" type="Node2D"]
+script = ExtResource("1_p3ued")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
