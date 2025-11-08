@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://7ndnxetyx7uh"]
+[gd_scene load_steps=18 format=3 uid="uid://7ndnxetyx7uh"]
 
+[ext_resource type="Script" uid="uid://3mgo7lhfxhm5" path="res://Scripts/character_body_2d.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://ckt80fpvqydmx" path="res://Sprites/mrn_sheet.png" id="1_wtcfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0e48y"]
@@ -98,21 +99,26 @@ height = 10.0
 [node name="Node2D" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_0e48y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_0h7mo")
-frame = 3
-frame_progress = 0.99066883
+frame = 2
+frame_progress = 0.48576754
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -6)
 shape = SubResource("CapsuleShape2D_nr8wp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_d2bti")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 8)
+position = Vector2(0, 1)
 shape = SubResource("WorldBoundaryShape2D_ta5nu")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -18)
