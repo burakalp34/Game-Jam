@@ -6,7 +6,7 @@ var turningLeft = false
 
 var thrust = 3000 #in newtons
 var rcsThrust = 10000 #in newtons
-var littleBitOfFriction = 500 #in newtons for arcady gameplay
+var littleBitOfFriction = 5 #in newtons for arcady gameplay
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,12 +20,16 @@ func _process(delta: float) -> void:
 	
 	if(turningRight):
 		$".".apply_torque(rcsThrust)
+		if($".".linear_velocity != Vector2.ZERO):
+			$".".apply_force(-$".".linear_velocity * littleBitOfFriction)
 		
 	if(turningLeft):
 		$".".apply_torque(-rcsThrust)
+		if($".".linear_velocity != Vector2.ZERO):
+			$".".apply_force(-$".".linear_velocity * littleBitOfFriction)
 		
-	if($".".linear.velocity != Vector2.ZERO):
-		$".".apply_force(-$".".linear.velocity * littleBitOfFriction)
+	#if($".".linear_velocity != Vector2.ZERO):
+		#$".".apply_force(-$".".linear_velocity * littleBitOfFriction)
 	
 func _input(event: InputEvent) -> void:
 	if(event.is_action_pressed("Thrusters")):
