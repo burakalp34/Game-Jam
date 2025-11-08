@@ -3,7 +3,7 @@ extends Node2D
 @onready var player = $Spaceship
 @onready var asteroid = preload("res://Scenes/asteroid.tscn")
 
-var asteroidSpawnRadius = 2000
+var asteroidSpawnRadius = 500
 var defaultCooldown = 2
 var asteroidSpawnCooldown = 2
 var asteroidForce = 10
@@ -36,6 +36,7 @@ func spawnAsteroid(radius):
 	var dirVector = (secondPos - firstPos).normalized()
 	
 	var go = asteroid.instantiate()
-	go.apply_impulse(secondPos * asteroidForce, firstPos)
+	go.global_position = firstPos
+	go.apply_impulse(dirVector * asteroidForce)
 	add_child(go)
 	print("Asteroid!")

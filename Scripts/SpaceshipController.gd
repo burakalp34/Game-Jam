@@ -46,7 +46,8 @@ func _process(delta: float) -> void:
 		canShoot = false
 		
 		var go = bullet.instantiate()
-		go.apply_impulse(-transform.y * bulletForce, bulletPos.global_position)
+		go.global_position = bulletPos.global_position
+		go.apply_impulse(-transform.y * bulletForce)
 		add_child(go)
 		print("Shoot!")
 		
