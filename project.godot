@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://Sprites/icon.svg"
 <<<<<<<HEADrun/main_scene="uid://dvprhe1k03m3u"
 
+[autoload]
+
+Data="*res://data.gd"
+
 [display]
 
 window/size/viewport_width=1920
