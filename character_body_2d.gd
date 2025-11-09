@@ -1,11 +1,11 @@
 extends CharacterBody2D
-
-const bulletSpeed = 500
+var inter = 2.0 / (1.2 ** Data.mondeComp )
+var bulletSpeed = 500
 @onready var player = $CharacterBody2D
 @onready var enemie: CharacterBody2D = $"."
 @onready var depart_tir: Node2D = $departTire
 var bullet = preload("res://Scenes/bullet_op.tscn")
-var temps = 2.0
+var temps = inter
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	temps -= delta
 	if temps <= 0:
 		#shoot()
-		temps = 2.0
+		temps = inter
 	move_and_slide()
 	
 func shoot() -> void:
