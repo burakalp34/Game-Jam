@@ -25,13 +25,10 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-func take_damage(dmg: int) -> void:
+func take_damage(dmg:int) -> void:
 	hp -= dmg
 	if hp <= 0:
-		die()
-
-func die() -> void:
-	get_tree().change_scene_to_file("res://Scenes/ecranmort.tscn")	
+		queue_free()
 	
 	
 func shoot() -> void:

@@ -10,6 +10,7 @@ const DASH_COOLDOWN := 0.35
 
 @export var MAX_HEALTH := 100
 var health := MAX_HEALTH
+var is_dead := false
 
 @export var MAG_SIZE := 18
 @export var RELOAD_TIME := 1.2
@@ -158,10 +159,17 @@ func shoot() -> void:
 
 
 func take_damage(amount:int) -> void:
+	if is_dead:
+		return
 	health -= amount
 	update_hud()
 	if health <= 0:
-		get_tree().change_scene_to_file("res://Scenes/ecranmort.tscn")
+		is_dead = true
+		# optionnel: désactiver collisions / mouvements
+		set_physics_process(false)
+		set_process(false)
+		# changer de scène après la frame courante
+		get_tree().change_scene_to_file("res://ecranmort.tscn") 
 
 
 func update_hud() -> void:

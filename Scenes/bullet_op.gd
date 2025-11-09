@@ -25,7 +25,7 @@ func _on_body_entered(other: Node) -> void:
 
 	if hit_fx:
 		var fx := hit_fx.instantiate()
-		get_tree().current_scene.add_child(fx)
+		#get_tree().current_scene.add_child(fx)
 		fx.global_position = global_position
 
 	queue_free()
