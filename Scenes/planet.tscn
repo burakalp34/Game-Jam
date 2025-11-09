@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://diw8tkgml7ihg"]
+
+[ext_resource type="Texture2D" uid="uid://b820vbiducb7a" path="res://Sprites/Planet Parts/sphere2.png" id="1_vpe2g"]
+[ext_resource type="Texture2D" uid="uid://pt2fhd6o2evh" path="res://Sprites/Planet Parts/noise24.png" id="2_m0iey"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpe2g"]
+radius = 256.0
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Surface" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vpe2g")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_m0iey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_vpe2g")
