@@ -32,6 +32,7 @@ Spaceship="Player in space"
 "Space Bullet"="Bullet in space"
 Asteroid="Asteroid in space"
 Planet="Planets in space"
+Enemy=""
 
 [input]
 
