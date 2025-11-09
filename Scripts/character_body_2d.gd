@@ -35,6 +35,8 @@ var bullet = preload("res://Scenes/bullet_op.tscn")
 @onready var bulletPosRight: Node2D = $"shoot_right"
 var hud: Node = null
 
+var enemies
+
 func _ready() -> void:
 	hud = get_node("../HUDLayer/HUD")
 	await get_tree().process_frame
@@ -42,6 +44,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	enemies = get_tree().get_nodes_in_group("Enemy")
+	print(len(enemies))
+	
 	if dash_cd > 0.0:
 		dash_cd -= delta
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb5domllwl33h"]
+[gd_scene load_steps=5 format=3 uid="uid://cb5domllwl33h"]
 
 [ext_resource type="Script" uid="uid://c5ndylkh32dej" path="res://Scripts/SpaceshipController.gd" id="1_qkqkj"]
 [ext_resource type="Texture2D" uid="uid://ch66tl2ihpo4k" path="res://Sprites/simpleSpace_sheet@2.png" id="2_qkqkj"]
@@ -6,7 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1hcmv"]
 radius = 40.1995
 
-[node name="Spaceship" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkqkj"]
+radius = 48.0
+
+[node name="Spaceship" type="RigidBody2D" groups=["Spaceship"]]
 mass = 25.0
 gravity_scale = 0.0
 script = ExtResource("1_qkqkj")
@@ -22,3 +25,10 @@ shape = SubResource("CircleShape2D_1hcmv")
 
 [node name="Bullet Launch Pos" type="Node2D" parent="."]
 position = Vector2(0, -80)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Spaceship"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Spaceship"]]
+shape = SubResource("CircleShape2D_qkqkj")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck427l7v1mlt4"]
+[gd_scene load_steps=5 format=3 uid="uid://ck427l7v1mlt4"]
 
 [ext_resource type="Texture2D" uid="uid://ch66tl2ihpo4k" path="res://Sprites/simpleSpace_sheet@2.png" id="1_0tomg"]
 
@@ -17,24 +17,37 @@ func _process(delta: float) -> void:
 
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	$\".\".queue_free()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if(area.is_in_group(\"Space Bullet\")):
+		$\".\".queue_free()
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a2bka"]
 radius = 16.0
 
-[node name="Asteroid" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tomg"]
+radius = 17.0
+
+[node name="Asteroid" type="RigidBody2D" groups=["Asteroid"]]
 collision_mask = 3
 mass = 10.0
 gravity_scale = 0.0
 script = SubResource("GDScript_0tomg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Asteroid"]]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0tomg")
 region_enabled = true
 region_rect = Rect2(400, 448, 64, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Asteroid"]]
 shape = SubResource("CircleShape2D_a2bka")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Asteroid"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Asteroid"]]
+shape = SubResource("CircleShape2D_0tomg")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

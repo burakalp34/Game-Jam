@@ -22,7 +22,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemie" type="Node2D"]
+[node name="Enemie" type="Node2D" groups=["Enemy"]]
 
 [node name="enemie" type="CharacterBody2D" parent="."]
 script = ExtResource("1_bs3ma")

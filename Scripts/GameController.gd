@@ -12,7 +12,7 @@ var asteroidForce = 2000 * 1.1 ** Data.mondeComp
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print(GenerateZone(Vector2(0, 0), 25))
-	zones.append(GenerateZone(Vector2(0, 0), 30))
+	zones.append(GenerateZone(Vector2(0, 0), 40))
 	'''print(zones)
 	print("Line break!!!")
 	print(zones[0])
@@ -56,9 +56,9 @@ func _process(delta: float) -> void:
 	#print("IN SOI OF PLANET 0?")
 	#print(isInSOI(player, zones[0][1][0]))
 	
-	print(player.global_position)
-	print(zones[0][1][0][0])
-	print(player.global_position.distance_to(zones[0][1][0][0]))
+	#print(player.global_position)
+	#print(zones[0][1][0][0])
+	#print(player.global_position.distance_to(zones[0][1][0][0]))
 	
 	asteroidSpawnCooldown -= delta
 	if(asteroidSpawnCooldown <= 0):

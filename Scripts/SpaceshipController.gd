@@ -105,8 +105,18 @@ func _input(event: InputEvent) -> void:
 		shooting = false
 
 '''
-func _on_body_entered(body: Node) -> void:
+func _on_body_aentered(body: Node) -> void:
 	life -= 100
 	if life <= 0:
 		get_tree().change_scene_to_file("res://Scenes/start.tscn")
 '''
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Planet")):
+		var scene
+		if($".".linear_velocity.length() <= 100):
+			scene = "res://Scenes/node_2d.tscn"
+		else:
+			scene = "res://ecranmort.tscn"
+		get_tree().change_scene_to_file(scene)

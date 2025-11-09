@@ -1,19 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwsay3cfnwobn"]
+[gd_scene load_steps=4 format=3 uid="uid://bwsay3cfnwobn"]
 
 [ext_resource type="Texture2D" uid="uid://ch66tl2ihpo4k" path="res://Sprites/simpleSpace_sheet@2.png" id="1_xjght"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xjght"]
 radius = 8.0
 
-[node name="Bullet" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_oduel"]
+radius = 9.0
+
+[node name="Bullet" type="RigidBody2D" groups=["Space Bullet"]]
 collision_mask = 3
 gravity_scale = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Space Bullet"]]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_xjght")
 region_enabled = true
 region_rect = Rect2(529, 481, 31, 31)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Space Bullet"]]
 shape = SubResource("CircleShape2D_xjght")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Space Bullet"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Space Bullet"]]
+shape = SubResource("CircleShape2D_oduel")
