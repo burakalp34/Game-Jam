@@ -5,7 +5,7 @@ var turningRight = false
 var turningLeft = false
 var shooting = false
 
-var thrust = 3000 #in newtons
+var thrust = 10000 #in newtons
 var rcsThrust = 10000 #in newtons
 var littleBitOfFriction = 5 #in newtons for arcady gameplay
 var bulletForce = 3000
@@ -18,6 +18,7 @@ var shotCooldown = 0.05
 var burstCount = 3
 var maxBurst = 3
 var canShoot = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
