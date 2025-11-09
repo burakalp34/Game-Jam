@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://n32kqckvsbrh"]
+
+[ext_resource type="Script" uid="uid://blnmntxw1xy4s" path="res://character_body_2d.gd" id="1_bs3ma"]
+[ext_resource type="Texture2D" uid="uid://dft43h2i2pchj" path="res://Sprites/free-guns-pack-2-for-main-characters-pixel-art/1 Characters/3 Cyborg/Idle1.png" id="2_qv21c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x7mej"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srhsx"]
+atlas = ExtResource("2_qv21c")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uy3b6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srhsx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemie" type="Node2D"]
+
+[node name="enemie" type="CharacterBody2D" parent="."]
+script = ExtResource("1_bs3ma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemie"]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_x7mej")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="enemie"]
+position = Vector2(7, -14.000001)
+scale = Vector2(0.6875, 0.5833333)
+sprite_frames = SubResource("SpriteFrames_uy3b6")
+
+[node name="departTire" type="Node2D" parent="enemie"]
+position = Vector2(1, -13)

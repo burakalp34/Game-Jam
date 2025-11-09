@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://clgey5hvuocvn"]
+
+[ext_resource type="Script" uid="uid://b2bsurur6bptb" path="res://ecranmort.gd" id="1_d1eie"]
+[ext_resource type="Texture2D" uid="uid://b0ip2o1xrb30j" path="res://Sprites/ChatGPT Image 9 nov. 2025 à 11_23_34.png" id="1_vd8xw"]
+[ext_resource type="Script" uid="uid://ciwy1rdx2co56" path="res://imagede_mort.gd" id="2_lpu4i"]
+
+[node name="ecranmort" type="Node2D"]
+script = ExtResource("1_d1eie")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.22, 1.22)
+
+[node name="imagedeMort" type="TextureButton" parent="."]
+offset_left = -772.0
+offset_top = -510.0
+offset_right = 770.0
+offset_bottom = 516.0
+texture_normal = ExtResource("1_vd8xw")
+script = ExtResource("2_lpu4i")
+
+[node name="DeathText" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
