@@ -4,10 +4,10 @@ extends Node2D
 @onready var asteroid = preload("res://Scenes/asteroid.tscn")
 @onready var planet = preload("res://Scenes/planet.tscn")
 
-var asteroidSpawnRadius = 6000
+var asteroidSpawnRadius = 6000 * 1.2** Data.mondeComp
 var defaultCooldown = 1
 var asteroidSpawnCooldown = 0
-var asteroidForce = 2000
+var asteroidForce = 2000 * 1.1 ** Data.mondeComp
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
