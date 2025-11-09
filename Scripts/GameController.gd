@@ -4,7 +4,7 @@ extends Node2D
 @onready var asteroid = preload("res://Scenes/asteroid.tscn")
 @onready var planet = preload("res://Scenes/planet.tscn")
 
-var asteroidSpawnRadius = 3000
+var asteroidSpawnRadius = 6000
 var defaultCooldown = 1
 var asteroidSpawnCooldown = 0
 var asteroidForce = 2000
@@ -224,3 +224,5 @@ func SeperatePlanets(planets, minDist):
 	
 	#print(planetsToReturn)
 	return planetsToReturn
+
+#func 
