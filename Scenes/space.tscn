@@ -21,3 +21,5 @@ autoplay = true
 max_distance = 9999999.0
 attenuation = 1e-05
 script = ExtResource("4_wnfdr")
+
+[connection signal="body_entered" from="Spaceship" to="Spaceship" method="_on_body_entered"]
