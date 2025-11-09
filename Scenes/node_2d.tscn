@@ -465,13 +465,13 @@ volume_db = 5.107
 autoplay = true
 script = ExtResource("6_wjtap")
 
-[node name="Enemie" parent="." groups=["Enemy"] instance=ExtResource("7_wjtap")]
+[node name="Enemie" parent="." instance=ExtResource("7_wjtap")]
 position = Vector2(671, 323)
 
-[node name="Enemie2" parent="." groups=["Enemy"] instance=ExtResource("7_wjtap")]
+[node name="Enemie2" parent="." instance=ExtResource("7_wjtap")]
 position = Vector2(620, 458)
 
-[node name="Enemie3" parent="." groups=["Enemy"] instance=ExtResource("7_wjtap")]
+[node name="Enemie3" parent="." instance=ExtResource("7_wjtap")]
 position = Vector2(467, 371)
 
 [node name="Enemie4" parent="." instance=ExtResource("7_wjtap")]
