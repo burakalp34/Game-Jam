@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://v4og8jf3yqgg"]
+
+[node name="ecranmort" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

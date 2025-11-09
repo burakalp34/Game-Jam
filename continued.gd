@@ -8,7 +8,6 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	var tree := get_tree()
-	#tree.paused = false
-	tree.change_scene_to_file("res://Scenes/Space.tscn")
+	tree.change_scene_to_file("res://Scenes/start.tscn")
 
 	
