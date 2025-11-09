@@ -49,6 +49,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if Data.enemie <= 0:
+		get_tree().change_scene_to_file("res://Scenes/Space.tscn")
+		Data.res()
+		Data.inc()
 	if dash_cd > 0.0:
 		dash_cd -= delta
 

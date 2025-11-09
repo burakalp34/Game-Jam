@@ -29,6 +29,7 @@ func take_damage(dmg:int) -> void:
 	hp -= dmg
 	if hp <= 0:
 		queue_free()
+		Data.minus()
 	
 	
 func shoot() -> void:
