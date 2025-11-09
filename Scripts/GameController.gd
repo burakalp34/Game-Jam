@@ -22,6 +22,10 @@ func _process(delta: float) -> void:
 		asteroidSpawnCooldown = defaultCooldown
 		spawnAsteroid(asteroidSpawnRadius)
 		spawnAsteroid(asteroidSpawnRadius)
+	
+	#if Input.is_action_just_pressed("esc"):
+	#	get_tree().paused = true
+	#	get_tree().change_scene_to_file("res://Scenes/pause.tscn")
 
 func spawnAsteroid(radius):
 	var firstAngle = randf_range(0, 2 * PI)

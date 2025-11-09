@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgcsgj2waprn8"]
+
+[ext_resource type="Texture2D" uid="uid://c0uypvh4nb6ra" path="res://Sprites/ChatGPT Image 9 nov. 2025 à 04_54_49.png" id="1_e0jm0"]
+[ext_resource type="Script" uid="uid://fumasxkuhw20" path="res://sprite_2d.gd" id="2_3fojq"]
+[ext_resource type="Texture2D" uid="uid://dkw81b2otc0dc" path="res://Sprites/ChatGPT Image 9 nov. 2025 à 09_00_11.png" id="3_nsogc"]
+[ext_resource type="Script" uid="uid://4npodhay2bxs" path="res://continued.gd" id="4_0pswh"]
+
+[node name="Node2D" type="Node2D"]
+process_mode = 2
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ecranPause" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3.9999695, -5.499977)
+scale = Vector2(1.2395834, 1.038086)
+texture = ExtResource("1_e0jm0")
+script = ExtResource("2_3fojq")
+
+[node name="continued" type="TextureButton" parent="."]
+process_mode = 3
+offset_left = -408.0
+offset_top = -90.0
+offset_right = 616.0
+offset_bottom = 934.0
+scale = Vector2(0.78, 0.78)
+texture_normal = ExtResource("3_nsogc")
+script = ExtResource("4_0pswh")
+
+[connection signal="pressed" from="continued" to="continued" method="_on_pressed"]
