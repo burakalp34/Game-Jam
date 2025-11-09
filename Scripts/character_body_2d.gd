@@ -137,27 +137,32 @@ func shoot() -> void:
 	if ammo_in_mag <= 0:
 		start_reload()
 		return
-	var piou := bullet.instantiate()
-	get_tree().current_scene.add_child(piou)
+
+	var b := bullet.instantiate()
 	var facing := 1 if animated_sprite.flip_h else -1
+
 	if facing == 1:
-		piou.global_position = bulletPosRight.global_position
+		b.global_position = bulletPosRight.global_position
 	else:
-		piou.global_position = bulletPosLeft.global_position
-	if piou.has_method("apply_impulse"):
-		piou.apply_impulse(Vector2(BULLET_SPEED * facing, 0), Vector2.ZERO)
+		b.global_position = bulletPosLeft.global_position
+
+	if b is RigidBody2D:
+		b.linear_velocity = Vector2(BULLET_SPEED * facing, 0)
+		b.shooter = self
+		b.add_collision_exception_with(self)
+
+	get_tree().current_scene.add_child(b)
+
 	ammo_in_mag -= 1
 	update_hud()
 
-func take_damage(amount:int) -> void:
-	health = max(0, health - amount)
-	update_hud()
-	if health == 0:
-		queue_free()
 
-func heal(amount:int) -> void:
-	health = min(MAX_HEALTH, health + amount)
+func take_damage(amount:int) -> void:
+	health -= amount
 	update_hud()
+	if health <= 0:
+		get_tree().change_scene_to_file("res://Scenes/ecranmort.tscn")
+
 
 func update_hud() -> void:
 	if hud:
