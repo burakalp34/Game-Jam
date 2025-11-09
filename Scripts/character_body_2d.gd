@@ -47,6 +47,10 @@ func _physics_process(delta: float) -> void:
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	print(len(enemies))
 	
+	if Data.enemie <= 0:
+		get_tree().change_scene_to_file("res://Scenes/Space.tscn")
+		Data.res()
+		Data.inc()
 	if dash_cd > 0.0:
 		dash_cd -= delta
 

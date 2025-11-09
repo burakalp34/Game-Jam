@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://3mgo7lhfxhm5" path="res://Scripts/character_body_2d.gd" id="1_hh5uf"]
 [ext_resource type="Texture2D" uid="uid://ckt80fpvqydmx" path="res://Sprites/mrn_sheet.png" id="2_hh5uf"]
 [ext_resource type="Texture2D" uid="uid://bbhuifnqps05n" path="res://Sprites/sprites/world_tileset.png" id="3_hh5uf"]
-[ext_resource type="Script" path="res://Scenes/hud.gd" id="4_6whob"]
+[ext_resource type="Script" uid="uid://bdr8u3uch02g3" path="res://Scenes/hud.gd" id="4_6whob"]
 [ext_resource type="AudioStream" uid="uid://wgarbbfex80m" path="res://Music and SFX/LLN First Draft.mp3" id="5_tx0tn"]
-[ext_resource type="Script" path="res://Scenes/audio_stream_player_2d.gd" id="6_wjtap"]
+[ext_resource type="Script" uid="uid://hbnj5rlrpc3o" path="res://Scenes/audio_stream_player_2d.gd" id="6_wjtap"]
 [ext_resource type="PackedScene" uid="uid://ddvph0k5j80uc" path="res://Scenes/enemie.tscn" id="7_wjtap"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_he4j0"]
@@ -465,13 +465,13 @@ volume_db = 5.107
 autoplay = true
 script = ExtResource("6_wjtap")
 
-[node name="Enemie" parent="." groups=["Enemy"] instance=ExtResource("7_wjtap")]
+[node name="Enemie" parent="." instance=ExtResource("7_wjtap")]
 position = Vector2(671, 323)
 
-[node name="Enemie2" parent="." groups=["Enemy"] instance=ExtResource("7_wjtap")]
+[node name="Enemie2" parent="." instance=ExtResource("7_wjtap")]
 position = Vector2(620, 458)
 
-[node name="Enemie3" parent="." groups=["Enemy"] instance=ExtResource("7_wjtap")]
+[node name="Enemie3" parent="." instance=ExtResource("7_wjtap")]
 position = Vector2(467, 371)
 
 [node name="Enemie4" parent="." instance=ExtResource("7_wjtap")]
