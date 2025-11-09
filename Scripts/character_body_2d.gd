@@ -42,10 +42,12 @@ func _ready() -> void:
 	await get_tree().process_frame
 	update_hud()
 
-
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	enemies = get_tree().get_nodes_in_group("Enemy")
 	print(len(enemies))
+
+
+func _physics_process(delta: float) -> void:
 	
 	if Data.enemie <= 0:
 		get_tree().change_scene_to_file("res://Scenes/Space.tscn")
