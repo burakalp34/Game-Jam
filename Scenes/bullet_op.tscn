@@ -7,7 +7,7 @@
 size = Vector2(2, 0.5)
 
 [node name="bullet_op" type="RigidBody2D"]
-gravity_scale = 0.086
+gravity_scale = 0.0
 script = ExtResource("1_0aetp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
