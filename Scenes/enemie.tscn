@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://n32kqckvsbrh"]
+[gd_scene load_steps=6 format=3 uid="uid://ddvph0k5j80uc"]
 
 [ext_resource type="Script" uid="uid://blnmntxw1xy4s" path="res://character_body_2d.gd" id="1_bs3ma"]
 [ext_resource type="Texture2D" uid="uid://dft43h2i2pchj" path="res://Sprites/free-guns-pack-2-for-main-characters-pixel-art/1 Characters/3 Cyborg/Idle1.png" id="2_qv21c"]
@@ -37,4 +37,4 @@ scale = Vector2(0.6875, 0.5833333)
 sprite_frames = SubResource("SpriteFrames_uy3b6")
 
 [node name="departTire" type="Node2D" parent="enemie"]
-position = Vector2(1, -13)
+position = Vector2(0, -12)
