@@ -12,11 +12,54 @@ var asteroidForce = 2000
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print(GenerateZone(Vector2(0, 0), 25))
-	GenerateZone(Vector2(0, 0), 5)
+	zones.append(GenerateZone(Vector2(0, 0), 30))
+	'''print(zones)
+	print("Line break!!!")
+	print(zones[0])
+	print("Line break!!!")
+	print(zones[0][1])
+	print("Line break!!!")
+	print(zones[0][1][0])
+	print("Line break!!!")
+	print(zones[0][1][0][0])'''
+	#zones[i][j][k][l]
+	#zones contains every single zone
+	#zones[i] contains the ith zone
+	#zones[i][j] goes between the position (0) and the planets array (1) of zone
+	#zones[i][1][k] is the kth planet of zone
+	#zones[1][1][k][l] gets the lth element of a planet
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#planetAttraction(player, zones[0][1][0])
+	for i in zones:
+		for j in i[1]:
+			if(isInSOI(player, j)):
+				planetAttraction(player, j)
+	'''
+	var insideANode = true
+	var closestZonePos = Vector2.ZERO
+	for i in zones:
+		var zoneDist = i[0].distance_to(player.global_position)
+		if(zoneDist <= zoneLimit):
+			insideANode = true
+		if(zoneDist < closestZonePos.distance_to(player.global_position)):
+			closestZonePos = i[0]
+			
+	if(!insideANode):
+		zones.append(GenerateZone((player.global_position - closestZonePos).normalized() * zoneLimit, 5))
+	'''
+	
+	#print("DISTANCE TO PLANET 0:")
+	#print(player.position.distance_to(zones[0][1][0][0]))
+	#print("IN SOI OF PLANET 0?")
+	#print(isInSOI(player, zones[0][1][0]))
+	
+	print(player.global_position)
+	print(zones[0][1][0][0])
+	print(player.global_position.distance_to(zones[0][1][0][0]))
+	
 	asteroidSpawnCooldown -= delta
 	if(asteroidSpawnCooldown <= 0):
 		asteroidSpawnCooldown = defaultCooldown
@@ -52,6 +95,10 @@ func spawnAsteroid(radius):
 	add_child(go)
 	#print("Asteroid!")
 
+
+
+
+
 #Time to describe how I'll deal with our little planets!
 
 var zones = []
@@ -69,7 +116,7 @@ var zones = []
 #4: surface color index
 #5: cloud noise index
 
-var zoneSize = 10000
+var zoneSize = 100000
 #The size of all zones in game
 var zoneLimit = 5000
 #The distance where a new zone will be generated
@@ -131,15 +178,14 @@ func GenerateZone(pos, planetCount):
 	zoneArray.append(planetsArray)
 	
 	#print(planetsArray == SeperatePlanets(planetsArray, 1000))
-	var storage = planetsArray
-	planetsArray = SeperatePlanets(planetsArray, 1000)
-	print(storage == planetsArray)
+	#var storage = planetsArray
+	planetsArray = SeperatePlanets(planetsArray, 2000)
+	#print(storage == planetsArray)
 	
 	return zoneArray
 	
 func GeneratePlanet(rootPos):
 	var planetArray = []
-
 	#Generating position
 	planetArray.append(Vector2(randf_range(rootPos.x - zoneSize, rootPos.x + zoneSize), randf_range(rootPos.y - zoneSize, rootPos.y + zoneSize)))
 	
@@ -147,7 +193,7 @@ func GeneratePlanet(rootPos):
 	planetArray.append(randf_range(0.5, 1.5))
 	
 	#Generating sphere of influence
-	planetArray.append(planetArray[1] * 40)
+	planetArray.append(planetArray[1] * 512)
 	
 	#Generating planet node
 	var newPlanet = planet.instantiate()
@@ -156,6 +202,9 @@ func GeneratePlanet(rootPos):
 	
 	var surfaceTexture = newPlanet.get_node("Surface")
 	var cloudTexture = newPlanet.get_node("Clouds")
+	var soiTexture = newPlanet.get_node("SOI")
+	
+	soiTexture.scale *= 512 / (planetArray[2])
 	
 	var colorIndex = randi_range(0, len(possibleColors) - 1)
 	var cloudIndex = randi_range(0, len(cloudNoise) - 1)
@@ -171,6 +220,15 @@ func GeneratePlanet(rootPos):
 	#Generating cloud noise index
 	planetArray.append(cloudIndex)
 	
+	'''print("We're really doing this huh?")
+	print(planetArray)
+	var newIndex = 0
+	for i in planetArray:
+		print(str(newIndex) + ":")
+		print(i)
+		newIndex += 1
+	'''
+	
 	return planetArray
 
 func SeperatePlanets(planets, minDist):
@@ -185,9 +243,9 @@ func SeperatePlanets(planets, minDist):
 	while testsSucceeded != len(planets):
 		#print("I should be here too?.. index: " + str(index))
 		if(index >= limit):
-			print("oh :(")
-			print(testsSucceeded)
-			print(len(planets))
+			#print("oh :(")
+			#print(testsSucceeded)
+			#print(len(planets))
 			#planetsToReturn = planets
 			break
 		
@@ -225,4 +283,21 @@ func SeperatePlanets(planets, minDist):
 	#print(planetsToReturn)
 	return planetsToReturn
 
-#func 
+func planetAttraction(rbToModify, attractingPlanet):
+	var g = attractingPlanet[1]	
+	#print(attractingPlanet)
+	#print("Line break!!!")
+	#print(attractingPlanet[1])
+	
+	var prevAngVel = rbToModify.angular_velocity
+	var force = (g / (attractingPlanet[0].distance_to(rbToModify.position) * attractingPlanet[0].distance_to(rbToModify.position))) * 10000
+	#rbToModify.angular_velocity = prevAngVel
+	
+	rbToModify.apply_impulse((attractingPlanet[0] - rbToModify.position) * force)
+
+func isInSOI(player, planet):
+	if player.global_position.distance_to(planet[0]) <= planet[2] * 8:
+		#print("IN SPHERE OF INFLUENCE WITH A DISTANCE OF:")
+		#	print(player.position.distance_to(planet[0]))
+		return true
+	return false

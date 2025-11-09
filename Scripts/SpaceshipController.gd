@@ -4,9 +4,10 @@ var thrustersFiring = false
 var turningRight = false
 var turningLeft = false
 var shooting = false
+var slowingDown = false
 
 var thrust = 10000 #in newtons
-var rcsThrust = 10000 #in newtons
+var rcsThrust = 20000 #in newtons
 var littleBitOfFriction = 5 #in newtons for arcady gameplay
 var bulletForce = 3000
 
@@ -23,7 +24,8 @@ var life = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	#body_entered.connect(_on_body_entered)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,6 +33,9 @@ func _process(delta: float) -> void:
 	
 	if(thrustersFiring):
 		$".".apply_force(-transform.y * thrust)
+	
+	if(slowingDown):
+		$".".apply_force(transform.y * (thrust * 0.75))
 	
 	if(turningRight):
 		$".".apply_torque(rcsThrust)
@@ -73,6 +78,12 @@ func _input(event: InputEvent) -> void:
 	if(event.is_action_released("Thrusters")):
 		thrustersFiring = false
 		
+	if(event.is_action_pressed("Slow")):
+		slowingDown = true
+	
+	if(event.is_action_released("Slow")):
+		slowingDown = false
+		
 	if(event.is_action_pressed("Turn Right")):
 		turningRight = true
 	
@@ -93,8 +104,9 @@ func _input(event: InputEvent) -> void:
 	if(event.is_action_released("Shoot")):
 		shooting = false
 
-
+'''
 func _on_body_entered(body: Node) -> void:
 	life -= 100
 	if life <= 0:
 		get_tree().change_scene_to_file("res://Scenes/start.tscn")
+'''
