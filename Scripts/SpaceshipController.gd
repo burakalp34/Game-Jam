@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 var thrustersFiring = false
 var turningRight = false
@@ -19,11 +19,11 @@ var burstCount = 3
 var maxBurst = 3
 var canShoot = true
 
+var life = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	body_entered.connect(_on_body_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -92,3 +92,9 @@ func _input(event: InputEvent) -> void:
 	
 	if(event.is_action_released("Shoot")):
 		shooting = false
+
+
+func _on_body_entered(body: Node) -> void:
+	life -= 100
+	if life <= 0:
+		get_tree().change_scene_to_file("res://Scenes/start.tscn")

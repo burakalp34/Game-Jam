@@ -10,10 +10,10 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Container" type="Container" parent="."]
-offset_left = -983.0
-offset_top = -550.0
-offset_right = 960.0
-offset_bottom = 553.0
+offset_left = -956.0
+offset_top = -538.0
+offset_right = 987.0
+offset_bottom = 565.0
 
 [node name="fonts" type="Sprite2D" parent="Container"]
 position = Vector2(984.99994, 548.5)
@@ -25,8 +25,12 @@ position = Vector2(930, 200)
 scale = Vector2(0.8515625, 0.8154297)
 texture = ExtResource("3_rk01k")
 
-[node name="Start_button" type="TextureButton" parent="Container"]
+[node name="Start_button" type="TextureButton" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+offset_left = -345.0
+offset_top = 87.0
+offset_right = 1191.0
+offset_bottom = 1111.0
+scale = Vector2(0.41, 0.41)
 texture_normal = ExtResource("2_lb6bl")
 script = ExtResource("3_lb6bl")
