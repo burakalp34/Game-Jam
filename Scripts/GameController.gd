@@ -12,7 +12,7 @@ var asteroidForce = 2000 * 1.1 ** Data.mondeComp
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print(GenerateZone(Vector2(0, 0), 25))
-	zones.append(GenerateZone(Vector2(0, 0), 40))
+	zones.append(GenerateZone(Vector2(0, 0), 55))
 	'''print(zones)
 	print("Line break!!!")
 	print(zones[0])
